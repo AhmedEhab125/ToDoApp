@@ -1,4 +1,3 @@
-import 'package:flutter_todo_app/models/task_model.dart';
 import 'package:moor_flutter/moor_flutter.dart';
 
 part 'tasks_database.g.dart';
