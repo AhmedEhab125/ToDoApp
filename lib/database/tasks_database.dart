@@ -1,10 +1,15 @@
 import 'package:flutter_todo_app/models/task_model.dart';
 import 'package:moor_flutter/moor_flutter.dart';
+
 part 'tasks_database.g.dart';
+
 class TasksTable extends Table {
   IntColumn get id => integer().autoIncrement()();
+
   TextColumn get name => text()();
+
   TextColumn get description => text()();
+
   TextColumn get state => text()();
 }
 
@@ -15,5 +20,9 @@ class TasksDataBase extends _$TasksDataBase {
 
   @override
   int get schemaVersion => 1;
-Future<List<TasksTableData>> getAllTasks() => select(tasksTable).get();
+
+  Future<List<TasksTableData>> getAllTasks() => select(tasksTable).get();
+
+  Future<int> insertTask(TasksTableData task) => into(tasksTable).insert(task);
+  Future updateTaske(TasksTableData task) => update(tasksTable).replace(task);
 }
